@@ -9,6 +9,12 @@ from moviepy.editor import ImageClip, concatenate_videoclips, AudioFileClip
 import pyttsx3
 import uuid
 
+# -----------------------------
+# RUTA DE TESSERACT
+# Cambia esta ruta por la de tu instalación de Tesseract
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+# -----------------------------
+
 st.set_page_config(page_title="Texto a video sin API", layout="centered")
 st.title("Generador de Video desde Texto o Imagen (Local, Sin API)")
 st.write("Sube una imagen con texto o pega texto. Se genera audio y video offline.")
@@ -144,5 +150,6 @@ if st.button("Generar Video"):
                 st.video(output_path)
                 with open(output_path, "rb") as f:
                     st.download_button("Descargar MP4", f, "video.mp4", "video/mp4")
+
 
 
